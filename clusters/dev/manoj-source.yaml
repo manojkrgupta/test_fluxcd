@@ -9,3 +9,6 @@ spec:
   ref:
     branch: main
   url: https://github.com/manojkrgupta/test_fluxcd
+  secretRef:
+    name: flux-github-auth
+
