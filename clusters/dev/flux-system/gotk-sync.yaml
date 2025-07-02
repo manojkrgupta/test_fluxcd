@@ -1,17 +1,20 @@
+# clusters/dev/flux-system/gotk-sync.yaml
+
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
   name: flux-system
   namespace: flux-system
 spec:
-  interval: 1m
+  interval: 1m0s
   url: https://github.com/manojkrgupta/test_fluxcd
-  branch: main
   ref:
     branch: main
   ignore: |
-    # Ignore Flux's own config
-    /clusters/dev/flux-system
+    /clusters/dev/flux-system/**
+  secretRef:
+    name: flux-github-auth  
+
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -19,10 +22,9 @@ metadata:
   name: flux-system
   namespace: flux-system
 spec:
-  interval: 1m
+  interval: 1m0s
   path: ./clusters/dev
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
-  validation: client
