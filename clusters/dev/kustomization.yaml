@@ -1,0 +1,4 @@
+# clusters/dev/kustomization.yaml
+resources:
+  - flux-system
+  - apps/nginx
