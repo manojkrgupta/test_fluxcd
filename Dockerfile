@@ -1,4 +1,4 @@
-FROM docker.io/manojkrgupta/manoj-test:capgroup_nginx_stable-dev
+FROM docker.io/manojkrgupta/manoj-test:capgroup_nginx_amd64_stable-dev
 RUN echo "Hello from CodeBuild" > /hello.txt
 RUN cat /etc/apk/repositories
 USER root
